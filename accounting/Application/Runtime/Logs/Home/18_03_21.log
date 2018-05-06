@@ -1,0 +1,47 @@
+[ 2018-03-21T23:09:05+08:00 ] ::1 /accounting/Home-Index-jsonDataBill.html?page=1&limit=10
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001143s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001781s ]
+SQL: SHOW COLUMNS FROM `acc_account` [ RunTime:0.0118s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `acc_account` LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `acc_account` LIMIT 0,10   [ RunTime:0.0003s ]
+
+[ 2018-03-21T23:09:06+08:00 ] ::1 /accounting/Home-Index-jsonDataCol.html?page=1&limit=10
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000435s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000735s ]
+SQL: SHOW COLUMNS FROM `acc_classify` [ RunTime:0.0037s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `acc_classify` LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `acc_classify` LIMIT 0,10   [ RunTime:0.0002s ]
+
+[ 2018-03-21T23:09:28+08:00 ] ::1 /accounting/Home-Index-jsonDataCol.html?page=1&limit=20
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000432s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000716s ]
+SQL: SHOW COLUMNS FROM `acc_classify` [ RunTime:0.0037s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `acc_classify` LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `acc_classify` LIMIT 0,20   [ RunTime:0.0002s ]
+
+[ 2018-03-21T23:10:30+08:00 ] ::1 /accounting/Home-Index-colMod.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000450s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000746s ]
+SQL: SHOW COLUMNS FROM `acc_classify` [ RunTime:0.0041s ]
+SQL: UPDATE `acc_classify` SET `cols`='qwes',`cols_info`='asdfghjk',`cols_account`='收入',`cols_finallydate`='2018-03-21 23:10:29' WHERE ( Id='1' ) [ RunTime:0.1368s ]
+
+[ 2018-03-21T23:10:36+08:00 ] ::1 /accounting/Home-Index-jsonDataBill.html?page=1&limit=10
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000440s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000726s ]
+SQL: SHOW COLUMNS FROM `acc_account` [ RunTime:0.0043s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `acc_account` LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `acc_account` LIMIT 0,10   [ RunTime:0.0002s ]
+
+[ 2018-03-21T23:10:37+08:00 ] ::1 /accounting/Home-Index-jsonDataCol.html?page=1&limit=10
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000445s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000750s ]
+SQL: SHOW COLUMNS FROM `acc_classify` [ RunTime:0.0043s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `acc_classify` LIMIT 1   [ RunTime:0.0002s ]
+SQL: SELECT * FROM `acc_classify` LIMIT 0,10   [ RunTime:0.0002s ]
+

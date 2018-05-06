@@ -1,0 +1,16 @@
+[ 2018-05-03T20:59:43+08:00 ] ::1 /accounting/Home-Index-jsonDataBill.html?page=1&limit=10
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000606s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001082s ]
+SQL: SHOW COLUMNS FROM `acc_account` [ RunTime:0.0124s ]
+SQL: SELECT * FROM `acc_account` WHERE ( a_user='yangwendi' ) LIMIT 0,10   [ RunTime:0.0005s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `acc_account` WHERE ( a_user='yangwendi' ) LIMIT 1   [ RunTime:0.0007s ]
+
+[ 2018-05-03T20:59:43+08:00 ] ::1 /accounting/Home-Index-jsonDataCol.html?page=1&limit=10
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000536s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000877s ]
+SQL: SHOW COLUMNS FROM `acc_classify` [ RunTime:0.0076s ]
+SQL: SELECT * FROM `acc_classify` WHERE ( cols_user='yangwendi' ) LIMIT 0,10   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `acc_classify` WHERE ( cols_user='yangwendi' ) LIMIT 1   [ RunTime:0.0002s ]
+

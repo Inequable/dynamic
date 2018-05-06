@@ -1,0 +1,15 @@
+.layui-table td, .layui-table th{
+	text-align: center;
+}
+#year{
+	height: 26px;
+}
+.income{
+	color: lime;
+}
+.pay{
+	color: red;
+}
+.count{
+	color: black;
+}

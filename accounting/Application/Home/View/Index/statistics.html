@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta charset="utf-8" /> 
+  <title>账单统计</title> 
+  <meta name="renderer" content="webkit" /> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+  <link rel="stylesheet" href="{$smarty.const.JS_URL}layui/css/layui.css" media="all"/>
+  <link rel="stylesheet" href="{$smarty.const.CSS_URL}statistics.css"/>
+</head>
+<body>
+	<div class="layui-tab layui-tab-card">
+		<ul class="layui-tab-title">
+			<li class="layui-this"><i class="layui-icon">&#xe629;</i> 帐目统计</li>
+		</ul>
+		<div class="layui-tab-content">
+			<div class="layui-btn-container">
+				<button class="layui-btn one">显示图表</button>
+			</div>
+			<div class="layui-tab-item layui-show">
+				<div class="layui-form">
+					<table class="layui-table">
+						<colgroup>
+							<col width="90px">
+						</colgroup>
+				    <thead>
+				    	<tr>
+				    		<th><input type="text" name="year" class="layui-input" id="year" placeholder="年份"></th>
+				    		<th>一月</th>
+				    		<th>二月</th>
+				    		<th>三月</th>
+				    		<th>四月</th>
+				    		<th>五月</th>
+				    		<th>六月</th>
+				    		<th>七月</th>
+				    		<th>八月</th>
+				    		<th>九月</th>
+				    		<th>十月</th>
+				    		<th>十一月</th>
+				    		<th>十二月</th>
+				    		<th class="count">合计</th>
+				    	</tr>
+				    </thead>
+				    <tbody>
+				    	{foreach $data as $k=>$list}
+				    	<tr>
+				    		<th>{$k}</th>
+				    		<th>{if $list['01']}{$list['01']}{else}0{/if}元</th>
+				    		<th>{if $list['02']}{$list['02']}{else}0{/if}元</th>
+				    		<th>{if $list['03']}{$list['03']}{else}0{/if}元</th>
+				    		<th>{if $list['04']}{$list['04']}{else}0{/if}元</th>
+				    		<th>{if $list['05']}{$list['05']}{else}0{/if}元</th>
+				    		<th>{if $list['06']}{$list['06']}{else}0{/if}元</th>
+				    		<th>{if $list['07']}{$list['07']}{else}0{/if}元</th>
+				    		<th>{if $list['08']}{$list['08']}{else}0{/if}元</th>
+				    		<th>{if $list['09']}{$list['09']}{else}0{/if}元</th>
+				    		<th>{if $list['10']}{$list['10']}{else}0{/if}元</th>
+				    		<th>{if $list['11']}{$list['11']}{else}0{/if}元</th>
+				    		<th>{if $list['12']}{$list['12']}{else}0{/if}元</th>
+				    		<th class="count">78.00元</th>
+				    	</tr>
+				    	{/foreach}
+				    	<tr class="income">
+				    		<th>月收入</th>
+				    		<th>1.00元</th>
+				    		<th>2.00元</th>
+				    		<th>3.00元</th>
+				    		<th>4.00元</th>
+				    		<th>5.00元</th>
+				    		<th>6.00元</th>
+				    		<th>7.00元</th>
+				    		<th>8.00元</th>
+				    		<th>9.00元</th>
+				    		<th>10.00元</th>
+				    		<th>11.00元</th>
+				    		<th>12.00元</th>
+				    		<th>78.00元</th>
+				    	</tr>
+				    	<tr class="pay">
+				    		<th>月支出</th>
+				    		<th>1.00元</th>
+				    		<th>2.00元</th>
+				    		<th>3.00元</th>
+				    		<th>4.00元</th>
+				    		<th>5.00元</th>
+				    		<th>6.00元</th>
+				    		<th>7.00元</th>
+				    		<th>8.00元</th>
+				    		<th>9.00元</th>
+				    		<th>10.00元</th>
+				    		<th>11.00元</th>
+				    		<th>12.00元</th>
+				    		<th>78.00元</th>
+				    	</tr>
+				    	<tr class="count">
+				    		<th>合计</th>
+				    		<th>1.00元</th>
+				    		<th>2.00元</th>
+				    		<th>3.00元</th>
+				    		<th>4.00元</th>
+				    		<th>5.00元</th>
+				    		<th>6.00元</th>
+				    		<th>7.00元</th>
+				    		<th>8.00元</th>
+				    		<th>9.00元</th>
+				    		<th>10.00元</th>
+				    		<th>11.00元</th>
+				    		<th>12.00元</th>
+				    		<th>78.00元</th>
+				    	</tr>
+				    </tbody>
+					</table>
+				</div>
+				<!-- 曲线图容器 -->
+				<div class="chart"></div>
+
+			</div>
+		</div>
+	</div>
+
+  <script src="{$smarty.const.JS_URL}jquery-3.3.1.min.js"></script>
+  <script src="{$smarty.const.JS_URL}layui/layui.js" charset="utf-8"></script>
+  <!-- Highcharts 是一个用纯JavaScript编写的一个图表库。 -->
+  <script src="{$smarty.const.JS_URL}highcharts.js"></script>
+  <script src="{$smarty.const.JS_URL}statistics.js"></script>
+
+ </body>
+</html>

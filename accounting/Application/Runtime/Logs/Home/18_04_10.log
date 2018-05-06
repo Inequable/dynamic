@@ -1,0 +1,32 @@
+[ 2018-04-10T21:05:43+08:00 ] 127.0.0.1 /accounting/Home-Index-jsonDataBill.html?page=1&limit=10
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000810s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001416s ]
+SQL: SHOW COLUMNS FROM `acc_account` [ RunTime:0.0099s ]
+SQL: SELECT * FROM `acc_account` WHERE ( a_user='yangwendi' ) LIMIT 0,10   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `acc_account` WHERE ( a_user='yangwendi' ) LIMIT 1   [ RunTime:0.0005s ]
+
+[ 2018-04-10T21:05:43+08:00 ] 127.0.0.1 /accounting/Home-Index-jsonDataCol.html?page=1&limit=10
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000736s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001225s ]
+SQL: SHOW COLUMNS FROM `acc_classify` [ RunTime:0.0059s ]
+SQL: SELECT * FROM `acc_classify` WHERE ( cols_user='yangwendi' ) LIMIT 0,10   [ RunTime:0.0007s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `acc_classify` WHERE ( cols_user='yangwendi' ) LIMIT 1   [ RunTime:0.0006s ]
+
+[ 2018-04-10T21:07:05+08:00 ] 127.0.0.1 /accounting/Home-Index-jsonDataBill.html?page=1&limit=10
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000457s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000885s ]
+SQL: SHOW COLUMNS FROM `acc_account` [ RunTime:0.0178s ]
+SQL: SELECT * FROM `acc_account` WHERE ( a_user='yangwendi' ) LIMIT 0,10   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `acc_account` WHERE ( a_user='yangwendi' ) LIMIT 1   [ RunTime:0.0003s ]
+
+[ 2018-04-10T21:07:05+08:00 ] 127.0.0.1 /accounting/Home-Index-jsonDataCol.html?page=1&limit=10
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000591s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000970s ]
+SQL: SHOW COLUMNS FROM `acc_classify` [ RunTime:0.0539s ]
+SQL: SELECT * FROM `acc_classify` WHERE ( cols_user='yangwendi' ) LIMIT 0,10   [ RunTime:0.0004s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `acc_classify` WHERE ( cols_user='yangwendi' ) LIMIT 1   [ RunTime:0.0002s ]
+

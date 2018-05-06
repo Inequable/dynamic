@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <meta charset="utf-8" /> 
+  <title>记一笔</title> 
+  <meta name="renderer" content="webkit" /> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+  <link rel="stylesheet" href="{$smarty.const.JS_URL}layui/css/layui.css" /> 
+  <link rel="stylesheet" href="{$smarty.const.CSS_URL}config.css" />
+  <script src="{$smarty.const.JS_URL}WdatePicker/WdatePicker.js"></script>
+ </head> 
+ <body> 
+  <div class="container"> 
+   <div class="layui-row"> 
+    <div class="layui-tab layui-tab-card"> 
+     <ul class="layui-tab-title"> 
+      <li class="layui-this"><i class="layui-icon">&#xe69c;</i> 支出</li> 
+      <li><i class="layui-icon">&#xe6af;</i> 收入</li> 
+     </ul> 
+     <div class="layui-tab-content"> 
+     <!-- 支出 -->
+      <div class="layui-tab-item layui-show"> 
+       <form action="{U('Index/accounting','flag=pay')}" method="post" class="layui-form layui-form-pane pay">
+        <div class="site-block"> 
+         <div class="layui-form-item"> 
+          <label class="layui-form-label"><i class="layui-icon">&#xe65e;</i> 支出金额：</label> 
+          <div class="layui-input-inline"> 
+           <input type="text" name="money[]" required="" class="layui-input" placeholder="请输入金额（￥）" required lay-verify="required|money" autocomplete="off" /> 
+          </div> 
+         </div> 
+         <div class="layui-form-item"> 
+          <label class="layui-form-label"><i class="layui-icon">&#xe735;</i> 支出分类：</label> 
+          <div class="layui-input-inline"> 
+           <select name="a_cols[]" lay-verify="required">
+            <option value="">请选择一个类别</option>
+            {foreach $cols as $column}
+              {if $column['cols_account'] eq '支出'}
+              <option value="{$column['cols']}">{$column['cols']}</option>
+              {/if}
+            {/foreach}
+           </select> 
+          </div> 
+         </div> 
+         <div class="layui-form-item layui-form-text"> 
+          <label class="layui-form-label"><i class="layui-icon">&#xe705;</i> 备注：</label> 
+          <div class="layui-input-block"> 
+           <textarea name="a_info[]" placeholder="有需要的请备注" class="layui-textarea" lay-verify="info"></textarea> 
+          </div> 
+         </div> 
+         <div class="layui-form-item"> 
+          <label class="layui-form-label"><i class="layui-icon">&#xe637;</i> 支出时间：</label> 
+          <div class="layui-input-inline"> 
+           <input type="text" name="a_date[]" class="layui-input" onclick="WdatePicker({ dateFmt:'yyyy-MM-dd' })" required lay-verify="required" autocomplete="off" placeholder="点击选择支出时间" readonly /> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="pay-node"></div>
+        <div class="layui-form-item"> 
+          <div class="layui-input-block"> 
+           <button lay-submit="" class="layui-btn" lay-filter="pay">立即提交</button> 
+           <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+           <span class="layui-btn layui-btn-normal" id="addPay">追加一笔支出</span> 
+           <span class="layui-btn layui-btn-danger" id="delPay" style="display: none;">删除一笔支出</span> 
+          </div> 
+         </div> 
+       </form> 
+      </div> 
+      <!-- 收入 -->
+      <div class="layui-tab-item">
+       <form action="{U('Index/accounting','flag=income')}" method="post" class="layui-form layui-form-pane income"> 
+        <div class="site-block"> 
+         <div class="layui-form-item"> 
+          <label class="layui-form-label"><i class="layui-icon">&#xe65e;</i> 收入金额：</label> 
+          <div class="layui-input-inline"> 
+           <input type="text" name="money[]" class="layui-input" placeholder="请输入金额（￥）" required="" lay-verify="required|money" autocomplete="off" /> 
+          </div> 
+         </div> 
+         <div class="layui-form-item"> 
+          <label class="layui-form-label"><i class="layui-icon">&#xe735;</i> 收入分类：</label> 
+          <div class="layui-input-inline"> 
+           <select name="a_cols[]" lay-verify="required">
+            <option value="">请选择一个类别</option>
+            {foreach $cols as $column}
+              {if $column['cols_account'] eq '收入'}
+              <option value="{$column['cols']}">{$column['cols']}</option>
+              {/if}
+            {/foreach}
+           </select> 
+          </div> 
+         </div> 
+         <div class="layui-form-item layui-form-text"> 
+          <label class="layui-form-label"><i class="layui-icon">&#xe705;</i> 备注：</label> 
+          <div class="layui-input-block"> 
+           <textarea name="a_info[]" placeholder="有需要的请备注" class="layui-textarea" lay-verify="info"></textarea> 
+          </div> 
+         </div> 
+         <div class="layui-form-item"> 
+          <label class="layui-form-label"><i class="layui-icon">&#xe637;</i> 收入时间：</label> 
+          <div class="layui-input-inline"> 
+           <input type="text" name="a_date[]" class="layui-input pay" onclick="WdatePicker({ dateFmt:'yyyy-MM-dd' })" required lay-verify="required" autocomplete="off" placeholder="点击选择收入时间" readonly /> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="income-node"></div>
+        <div class="layui-form-item"> 
+          <div class="layui-input-block"> 
+           <button class="layui-btn" lay-submit="" lay-filter="sbt">立即提交</button> 
+           <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+           <span class="layui-btn layui-btn-normal" id="income">追加一笔收入</span> 
+           <span class="layui-btn layui-btn-danger" id="delIncome" style="display: none;">删除一笔收入</span> 
+          </div> 
+         </div> 
+       </form> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <script src="{$smarty.const.JS_URL}layui/layui.all.js"></script> 
+  <script src="{$smarty.const.JS_URL}accounting.js"></script>  
+  <script src="{$smarty.const.JS_URL}customValidation.js"></script> 
+ </body>
+</html>

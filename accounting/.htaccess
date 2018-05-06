@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+  Options +FollowSymlinks
+  RewriteEngine On
+
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+  #RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]
+  RewriteRule ^(.*)$ index.php [L,E=PATH_INFO:$1]
+</IfModule>
+
+#官方文档中.htaccess里面RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]在php5.6以下有用。要是php5.6或者php5.6以上就得改为RewriteRule ^(.*)$ index.php [L,E=PATH_INFO:$1]方能有效

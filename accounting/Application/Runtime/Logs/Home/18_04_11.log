@@ -1,0 +1,32 @@
+[ 2018-04-11T21:29:04+08:00 ] 127.0.0.1 /accounting/Home-Index-jsonDataBill.html?page=1&limit=10
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001178s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002072s ]
+SQL: SHOW COLUMNS FROM `acc_account` [ RunTime:0.0262s ]
+SQL: SELECT * FROM `acc_account` WHERE ( a_user='yangwendi' ) LIMIT 0,10   [ RunTime:0.0005s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `acc_account` WHERE ( a_user='yangwendi' ) LIMIT 1   [ RunTime:0.0100s ]
+
+[ 2018-04-11T21:29:04+08:00 ] 127.0.0.1 /accounting/Home-Index-jsonDataCol.html?page=1&limit=10
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001161s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001874s ]
+SQL: SHOW COLUMNS FROM `acc_classify` [ RunTime:0.1304s ]
+SQL: SELECT * FROM `acc_classify` WHERE ( cols_user='yangwendi' ) LIMIT 0,10   [ RunTime:0.0014s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `acc_classify` WHERE ( cols_user='yangwendi' ) LIMIT 1   [ RunTime:0.0011s ]
+
+[ 2018-04-11T21:33:19+08:00 ] 127.0.0.1 /accounting/Home-Index-jsonDataBill.html?page=1&limit=10
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001347s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002241s ]
+SQL: SHOW COLUMNS FROM `acc_account` [ RunTime:0.0106s ]
+SQL: SELECT * FROM `acc_account` WHERE ( a_user='yangwendi' ) LIMIT 0,10   [ RunTime:0.0009s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `acc_account` WHERE ( a_user='yangwendi' ) LIMIT 1   [ RunTime:0.0007s ]
+
+[ 2018-04-11T21:33:25+08:00 ] 127.0.0.1 /accounting/Home-Index-jsonDataBill.html?page=13&limit=10
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001971s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003123s ]
+SQL: SHOW COLUMNS FROM `acc_account` [ RunTime:0.0299s ]
+SQL: SELECT * FROM `acc_account` WHERE ( a_user='yangwendi' ) LIMIT 120,10   [ RunTime:0.0012s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `acc_account` WHERE ( a_user='yangwendi' ) LIMIT 1   [ RunTime:0.0007s ]
+
