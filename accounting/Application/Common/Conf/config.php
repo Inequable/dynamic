@@ -10,8 +10,8 @@ return array(
 
 	// 'DB_DSN' => 'mysql://root:2015329122@localhost:3306/accounting#utf8'
 	'DB_TYPE'   => 'mysql', // 数据库类型
-	'DB_HOST'   => 'http://dyname-dyname.7e14.starter-us-west-2.openshiftapps.com', // 服务器地址
-	'DB_NAME'   => 'dyname', // 数据库名
+	'DB_HOST'   => '127.0.0.1', // 服务器地址
+	'DB_NAME'   => 'accounting', // 数据库名
 	'DB_USER'   => 'root', // 用户名
 	'DB_PWD'    => '2015329122', // 密码
 	'DB_PORT'   => 3306, // 端口
