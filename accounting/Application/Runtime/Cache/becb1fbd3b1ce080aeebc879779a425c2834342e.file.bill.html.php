@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2018-05-01 20:43:07
+<?php /* Smarty version Smarty-3.1.6, created on 2018-06-12 14:15:42
          compiled from "./Application/Home/View\Index\bill.html" */ ?>
 <?php /*%%SmartyHeaderCode:28545aaa03b4f15781-82845296%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'becb1fbd3b1ce080aeebc879779a425c2834342e' => 
     array (
       0 => './Application/Home/View\\Index\\bill.html',
-      1 => 1525165753,
+      1 => 1528784105,
       2 => 'file',
     ),
   ),
@@ -17,6 +17,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'version' => 'Smarty-3.1.6',
   'unifunc' => 'content_5aaa03b50d2a2',
+  'variables' => 
+  array (
+    'list' => 0,
+    'col' => 0,
+  ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5aaa03b50d2a2')) {function content_5aaa03b50d2a2($_smarty_tpl) {?><!DOCTYPE html>
@@ -48,7 +53,8 @@ WdatePicker/WdatePicker.js"></script>
       <div class="layui-colla-item">
         <h2 class="layui-colla-title">选择条件查询</h2>
         <div class="layui-colla-content">
-          <form action="" method="post" class="layui-form layui-form-pane">
+
+          <form action="" method="post" class="layui-form layui-form-pane" onsubmit="return false;">
             <div class="layui-form-item layui-inline">
               <label class="layui-form-label"><i class="layui-icon">&#xe636;</i> 收支：</label>
               <div class="layui-input-inline">
@@ -74,21 +80,28 @@ WdatePicker/WdatePicker.js"></script>
             <div class="layui-form-item layui-inline">
               <label class="layui-form-label"><i class="layui-icon">&#xe735;</i> 用途分类：</label>
               <div class="layui-input-inline">
-                <select name="a_cols">
+                <select name="a_cols" lay-search>
                   <option value="">用途分类</option>
-                  <option value="1">早餐</option>
-                  <option value="2">午餐</option>
-                  <option value="3">晚餐</option>
+                  <?php  $_smarty_tpl->tpl_vars['col'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['col']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['list']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['col']->key => $_smarty_tpl->tpl_vars['col']->value){
+$_smarty_tpl->tpl_vars['col']->_loop = true;
+?>
+                  <option value="<?php echo $_smarty_tpl->tpl_vars['col']->value['a_cols'];?>
+"><?php echo $_smarty_tpl->tpl_vars['col']->value['a_cols'];?>
+</option>
+                  <?php } ?>
                 </select>
               </div>
             </div>
             <div class="layui-form-item layui-inline">
               <div class="layui-input-inline">
-                <button class="layui-btn" type="submit" lay-filter="billSbt">立即提交</button>
+                <button class="layui-btn" type="submit" lay-filter="billSbt" lay-submit>查询</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
               </div>
             </div>
           </form>
+
         </div>
       </div>
     </div>

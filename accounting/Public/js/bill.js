@@ -6,6 +6,35 @@ layui.use(['table','element','form','laypage','layer'], function(){
   layer=layui.layer,//弹窗
   $=layui.jquery;//jquery插件
 
+  form.on('submit(billSbt)',function (_data) {
+    // console.log(_data.elem); //被执行事件的元素DOM对象，一般为button对象
+    // console.log(_data.form); //被执行提交的form对象，一般在存在form标签时才会返回
+    // console.log(_data.field); //当前容器的全部表单字段，名值对形式：{name: value}
+    var data = _data.field;
+    // $.ajax({
+    //   url:url_json,
+    //   type:'post',
+    //   data:{data:data},
+    //   success:function (result) {
+    //     if (result.code !== 0) {
+    //       layer.msg('查询出现错误');
+    //       return false;
+    //     }else{
+    //       table.reload('reloadList',{
+    //         page:{curr:1}
+    //       });
+    //     }
+    //   }
+    // });
+    table.reload('reloadList',{
+      where:{
+        data:data
+      },
+      page:{curr:1}
+    });
+    return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+  });
+
   //实例化table
   table.render({
     elem: '#listData',
@@ -22,6 +51,7 @@ layui.use(['table','element','form','laypage','layer'], function(){
       {fixed: 'right', title:'操作', width:125, align:'center', toolbar: '#bill'}
     ]],
     page: true,
+    id:'reloadList'
   });
 
   //监听工具条

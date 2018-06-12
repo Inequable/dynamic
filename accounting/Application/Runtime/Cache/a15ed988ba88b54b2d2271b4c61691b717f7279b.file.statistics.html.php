@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2018-04-09 16:55:17
+<?php /* Smarty version Smarty-3.1.6, created on 2018-06-12 12:38:18
          compiled from "./Application/Home/View\Index\statistics.html" */ ?>
 <?php /*%%SmartyHeaderCode:223165acb2a75d38573-15186843%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a15ed988ba88b54b2d2271b4c61691b717f7279b' => 
     array (
       0 => './Application/Home/View\\Index\\statistics.html',
-      1 => 1523263972,
+      1 => 1528778293,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.6',
+  'unifunc' => 'content_5acb2a75e0965',
   'variables' => 
   array (
     'data' => 0,
@@ -22,8 +24,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'list' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.6',
-  'unifunc' => 'content_5acb2a75e0965',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5acb2a75e0965')) {function content_5acb2a75e0965($_smarty_tpl) {?><!DOCTYPE html>
 <html>
@@ -49,7 +49,7 @@ statistics.css"/>
 			</div>
 			<div class="layui-tab-item layui-show">
 				<div class="layui-form">
-					<table class="layui-table">
+					<table class="layui-table" lay-size="sm">
 						<colgroup>
 							<col width="90px">
 						</colgroup>
@@ -82,34 +82,35 @@ $_smarty_tpl->tpl_vars['list']->_loop = true;
 				    	<tr>
 				    		<th><?php echo $_smarty_tpl->tpl_vars['k']->value;?>
 </th>
-				    		<th><?php if ($_smarty_tpl->tpl_vars['list']->value['01']){?><?php echo $_smarty_tpl->tpl_vars['list']->value['01'];?>
+				    		<th><?php if (isset($_smarty_tpl->tpl_vars['list']->value['01'])){?><?php echo $_smarty_tpl->tpl_vars['list']->value['01'];?>
 <?php }else{ ?>0<?php }?>元</th>
-				    		<th><?php if ($_smarty_tpl->tpl_vars['list']->value['02']){?><?php echo $_smarty_tpl->tpl_vars['list']->value['02'];?>
+				    		<th><?php if (isset($_smarty_tpl->tpl_vars['list']->value['02'])){?><?php echo $_smarty_tpl->tpl_vars['list']->value['02'];?>
 <?php }else{ ?>0<?php }?>元</th>
-				    		<th><?php if ($_smarty_tpl->tpl_vars['list']->value['03']){?><?php echo $_smarty_tpl->tpl_vars['list']->value['03'];?>
+				    		<th><?php if (isset($_smarty_tpl->tpl_vars['list']->value['03'])){?><?php echo $_smarty_tpl->tpl_vars['list']->value['03'];?>
 <?php }else{ ?>0<?php }?>元</th>
-				    		<th><?php if ($_smarty_tpl->tpl_vars['list']->value['04']){?><?php echo $_smarty_tpl->tpl_vars['list']->value['04'];?>
+				    		<th><?php if (isset($_smarty_tpl->tpl_vars['list']->value['04'])){?><?php echo $_smarty_tpl->tpl_vars['list']->value['04'];?>
 <?php }else{ ?>0<?php }?>元</th>
-				    		<th><?php if ($_smarty_tpl->tpl_vars['list']->value['05']){?><?php echo $_smarty_tpl->tpl_vars['list']->value['05'];?>
+				    		<th><?php if (isset($_smarty_tpl->tpl_vars['list']->value['05'])){?><?php echo $_smarty_tpl->tpl_vars['list']->value['05'];?>
 <?php }else{ ?>0<?php }?>元</th>
-				    		<th><?php if ($_smarty_tpl->tpl_vars['list']->value['06']){?><?php echo $_smarty_tpl->tpl_vars['list']->value['06'];?>
+				    		<th><?php if (isset($_smarty_tpl->tpl_vars['list']->value['06'])){?><?php echo $_smarty_tpl->tpl_vars['list']->value['06'];?>
 <?php }else{ ?>0<?php }?>元</th>
-				    		<th><?php if ($_smarty_tpl->tpl_vars['list']->value['07']){?><?php echo $_smarty_tpl->tpl_vars['list']->value['07'];?>
+				    		<th><?php if (isset($_smarty_tpl->tpl_vars['list']->value['07'])){?><?php echo $_smarty_tpl->tpl_vars['list']->value['07'];?>
 <?php }else{ ?>0<?php }?>元</th>
-				    		<th><?php if ($_smarty_tpl->tpl_vars['list']->value['08']){?><?php echo $_smarty_tpl->tpl_vars['list']->value['08'];?>
+				    		<th><?php if (isset($_smarty_tpl->tpl_vars['list']->value['08'])){?><?php echo $_smarty_tpl->tpl_vars['list']->value['08'];?>
 <?php }else{ ?>0<?php }?>元</th>
-				    		<th><?php if ($_smarty_tpl->tpl_vars['list']->value['09']){?><?php echo $_smarty_tpl->tpl_vars['list']->value['09'];?>
+				    		<th><?php if (isset($_smarty_tpl->tpl_vars['list']->value['09'])){?><?php echo $_smarty_tpl->tpl_vars['list']->value['09'];?>
 <?php }else{ ?>0<?php }?>元</th>
-				    		<th><?php if ($_smarty_tpl->tpl_vars['list']->value['10']){?><?php echo $_smarty_tpl->tpl_vars['list']->value['10'];?>
+				    		<th><?php if (isset($_smarty_tpl->tpl_vars['list']->value['10'])){?><?php echo $_smarty_tpl->tpl_vars['list']->value['10'];?>
 <?php }else{ ?>0<?php }?>元</th>
-				    		<th><?php if ($_smarty_tpl->tpl_vars['list']->value['11']){?><?php echo $_smarty_tpl->tpl_vars['list']->value['11'];?>
+				    		<th><?php if (isset($_smarty_tpl->tpl_vars['list']->value['11'])){?><?php echo $_smarty_tpl->tpl_vars['list']->value['11'];?>
 <?php }else{ ?>0<?php }?>元</th>
-				    		<th><?php if ($_smarty_tpl->tpl_vars['list']->value['12']){?><?php echo $_smarty_tpl->tpl_vars['list']->value['12'];?>
+				    		<th><?php if (isset($_smarty_tpl->tpl_vars['list']->value['12'])){?><?php echo $_smarty_tpl->tpl_vars['list']->value['12'];?>
 <?php }else{ ?>0<?php }?>元</th>
-				    		<th class="count">78.00元</th>
+				    		<th class="count"><?php echo (($tmp = @$_smarty_tpl->tpl_vars['list']->value['cols_total'])===null||$tmp==='' ? '0' : $tmp);?>
+元</th>
 				    	</tr>
 				    	<?php } ?>
-				    	<tr class="income">
+				    	<!-- <tr class="income">
 				    		<th>月收入</th>
 				    		<th>1.00元</th>
 				    		<th>2.00元</th>
@@ -156,7 +157,7 @@ $_smarty_tpl->tpl_vars['list']->_loop = true;
 				    		<th>11.00元</th>
 				    		<th>12.00元</th>
 				    		<th>78.00元</th>
-				    	</tr>
+				    	</tr> -->
 				    </tbody>
 					</table>
 				</div>
@@ -176,6 +177,11 @@ layui/layui.js" charset="utf-8"></script>
 highcharts.js"></script>
   <script src="<?php echo @JS_URL;?>
 statistics.js"></script>
+  <script>
+  $(document).ready(function(){
+  	
+  });
+  </script>
 
  </body>
 </html><?php }} ?>

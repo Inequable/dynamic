@@ -25,7 +25,8 @@
       <div class="layui-colla-item">
         <h2 class="layui-colla-title">选择条件查询</h2>
         <div class="layui-colla-content">
-          <form action="" method="post" class="layui-form layui-form-pane">
+
+          <form action="" method="post" class="layui-form layui-form-pane" onsubmit="return false;">
             <div class="layui-form-item layui-inline">
               <label class="layui-form-label"><i class="layui-icon">&#xe636;</i> 收支：</label>
               <div class="layui-input-inline">
@@ -51,21 +52,22 @@
             <div class="layui-form-item layui-inline">
               <label class="layui-form-label"><i class="layui-icon">&#xe735;</i> 用途分类：</label>
               <div class="layui-input-inline">
-                <select name="a_cols">
+                <select name="a_cols" lay-search>
                   <option value="">用途分类</option>
-                  <option value="1">早餐</option>
-                  <option value="2">午餐</option>
-                  <option value="3">晚餐</option>
+                  {foreach $list as $col}
+                  <option value="{$col.a_cols}">{$col.a_cols}</option>
+                  {/foreach}
                 </select>
               </div>
             </div>
             <div class="layui-form-item layui-inline">
               <div class="layui-input-inline">
-                <button class="layui-btn" type="submit" lay-filter="billSbt">立即提交</button>
+                <button class="layui-btn" type="submit" lay-filter="billSbt" lay-submit>查询</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
               </div>
             </div>
           </form>
+
         </div>
       </div>
     </div>

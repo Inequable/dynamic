@@ -20,7 +20,7 @@
 			</div>
 			<div class="layui-tab-item layui-show">
 				<div class="layui-form">
-					<table class="layui-table">
+					<table class="layui-table" lay-size="sm">
 						<colgroup>
 							<col width="90px">
 						</colgroup>
@@ -46,22 +46,22 @@
 				    	{foreach $data as $k=>$list}
 				    	<tr>
 				    		<th>{$k}</th>
-				    		<th>{if $list['01']}{$list['01']}{else}0{/if}元</th>
-				    		<th>{if $list['02']}{$list['02']}{else}0{/if}元</th>
-				    		<th>{if $list['03']}{$list['03']}{else}0{/if}元</th>
-				    		<th>{if $list['04']}{$list['04']}{else}0{/if}元</th>
-				    		<th>{if $list['05']}{$list['05']}{else}0{/if}元</th>
-				    		<th>{if $list['06']}{$list['06']}{else}0{/if}元</th>
-				    		<th>{if $list['07']}{$list['07']}{else}0{/if}元</th>
-				    		<th>{if $list['08']}{$list['08']}{else}0{/if}元</th>
-				    		<th>{if $list['09']}{$list['09']}{else}0{/if}元</th>
-				    		<th>{if $list['10']}{$list['10']}{else}0{/if}元</th>
-				    		<th>{if $list['11']}{$list['11']}{else}0{/if}元</th>
-				    		<th>{if $list['12']}{$list['12']}{else}0{/if}元</th>
-				    		<th class="count">78.00元</th>
+				    		<th>{if isset($list['01'])}{$list['01']}{else}0{/if}元</th>
+				    		<th>{if isset($list['02'])}{$list['02']}{else}0{/if}元</th>
+				    		<th>{if isset($list['03'])}{$list['03']}{else}0{/if}元</th>
+				    		<th>{if isset($list['04'])}{$list['04']}{else}0{/if}元</th>
+				    		<th>{if isset($list['05'])}{$list['05']}{else}0{/if}元</th>
+				    		<th>{if isset($list['06'])}{$list['06']}{else}0{/if}元</th>
+				    		<th>{if isset($list['07'])}{$list['07']}{else}0{/if}元</th>
+				    		<th>{if isset($list['08'])}{$list['08']}{else}0{/if}元</th>
+				    		<th>{if isset($list['09'])}{$list['09']}{else}0{/if}元</th>
+				    		<th>{if isset($list['10'])}{$list['10']}{else}0{/if}元</th>
+				    		<th>{if isset($list['11'])}{$list['11']}{else}0{/if}元</th>
+				    		<th>{if isset($list['12'])}{$list['12']}{else}0{/if}元</th>
+				    		<th class="count">{$list['cols_total']|default:'0'}元</th>
 				    	</tr>
 				    	{/foreach}
-				    	<tr class="income">
+				    	<!-- <tr class="income">
 				    		<th>月收入</th>
 				    		<th>1.00元</th>
 				    		<th>2.00元</th>
@@ -108,7 +108,7 @@
 				    		<th>11.00元</th>
 				    		<th>12.00元</th>
 				    		<th>78.00元</th>
-				    	</tr>
+				    	</tr> -->
 				    </tbody>
 					</table>
 				</div>
@@ -124,6 +124,11 @@
   <!-- Highcharts 是一个用纯JavaScript编写的一个图表库。 -->
   <script src="{$smarty.const.JS_URL}highcharts.js"></script>
   <script src="{$smarty.const.JS_URL}statistics.js"></script>
+  <script>
+  $(document).ready(function(){
+  	
+  });
+  </script>
 
  </body>
 </html>
