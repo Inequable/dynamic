@@ -72,15 +72,34 @@
         </ul>
         <div class="layui-tab-content">
           <div class="layui-tab-item layui-show">
-            <form action="" method="post" class="layui-form layui-form-pane">
-              <div class="layui-form-item">
-                <label class="layui-form-label"><i class="layui-icon">&#xe601;</i> 导出账单：</label>
-                <div class="layui-input-inline" style="text-align: center;">
-                  <button class="layui-btn" lay-submit="" lay-filter="">立即导出</button>
+
+            <form action="" method="post" class="layui-form layui-form-pane" onsubmit="return false;">
+              <div class="layui-form-item layui-inline">
+                <div class="layui-inline">
+                  <label class="layui-form-label"><i class="layui-icon">&#xe637;</i> 时间范围：</label>
+                  <div class="layui-input-inline">
+                    <input type="text" name="a_date" id="a_date" autocomplete="off" class="layui-input">
+                  </div>
                 </div>
-                <div class="layui-form-mid layui-word-aux">注意：文件超过2m，有可能导不出，尽量不要导出数据太大！</div>
+              </div>
+              <div class="layui-form-item layui-inline">
+                <label class="layui-form-label"><i class="layui-icon">&#xe735;</i> 用途分类：</label>
+                <div class="layui-input-inline">
+                  <select name="a_cols" lay-search>
+                    <option value="">用途分类</option>
+                    {foreach $list as $col}
+                    <option value="{$col.cols}">{$col.cols}</option>
+                    {/foreach}
+                  </select>
+                </div>
+              </div>
+              <div class="layui-form-item layui-inline">
+                <div class="layui-input-inline">
+                  <button class="layui-btn" type="submit" lay-filter="exportSbt" lay-submit>导出</button>
+                </div>
               </div>
             </form>
+
             <!-- 导出历史 -->
             <table id="billExport" lay-filter="export"></table>
           </div>
@@ -99,6 +118,10 @@
   </div>
 </div>
 <script src="{$smarty.const.JS_URL}layui/layui.js"></script>
+<script>
+var getBillExportData_url = "{U('Index/getBillExportData')}";
+var export_url = "{U('Index/export')}";
+</script>;
 <script src="{$smarty.const.JS_URL}index.js"></script>
 </body>
 </html>
