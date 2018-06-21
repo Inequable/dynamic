@@ -230,7 +230,7 @@ class IndexController extends Controller {
 		$user=session('user');
 		$m_account = D('Account');
 		$selectData = $m_account->getProcessingData($selectData);
-		$data = $m_account->limit("$first,$limit")->where("a_user='$user'".$selectData)->select();
+		$data = $m_account->limit("$first,$limit")->where("a_user='$user'".$selectData)->order('id desc')->select();
 		$count = $m_account->where("a_user='$user'".$selectData)->count();
 		$json = jsonResponseFormat(0,$count,$data,'');
 		$this->ajaxReturn($json);
@@ -282,6 +282,13 @@ class IndexController extends Controller {
 		$m_account=D('Account');
 
 		$res=$m_account->field("DATE_FORMAT(a_date,'%m') as months,sum(money) as sum,account,a_cols")->where("a_user='$user' and DATE_FORMAT(a_date,'%Y')='$year'")->group("months,a_cols,account")->select();
+		// 判断收支类型，如果是支出则为金额加上负号（-）
+		for ($i=0; $i < count($res); $i++) { 
+			if ($res[$i]['account'] === '支出') {
+				$res[$i]['sum'] = '-'.$res[$i]['sum'];
+			}
+		}
+		
 		// 存储月数组
 		$data=array();
 		foreach ($res as $v) {
@@ -297,6 +304,7 @@ class IndexController extends Controller {
 		// echo $m_account->_sql();
 		// echo '<pre>';
 		// print_r($res);
+		// print_r(json_encode($data,JSON_UNESCAPED_UNICODE));
 		// echo '</pre>';
 		// exit();
 

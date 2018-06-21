@@ -93,22 +93,7 @@
 							<th>12.00元</th>
 							<th>78.00元</th>
 						</tr> -->
-						<tr class="count">
-							<td>合计</td>
-							<td>1.00元</td>
-							<td>2.00元</td>
-							<td>3.00元</td>
-							<td>4.00元</td>
-							<td>5.00元</td>
-							<td>6.00元</td>
-							<td>7.00元</td>
-							<td>8.00元</td>
-							<td>9.00元</td>
-							<td>10.00元</td>
-							<td>11.00元</td>
-							<td>12.00元</td>
-							<td>78.00元</td>
-						</tr> 
+						<tr class="count"><td>合计</td></tr> 
 					</tbody>
 					</table>
 				</div>
@@ -126,17 +111,33 @@
 	<script src="{$smarty.const.JS_URL}statistics.js"></script>
 	<script>
 	$(document).ready(function(){
-// 一完成，就差数据回显
+		//浮点数加法运算,避免精度丢失
+		function FloatAdd(arg1,arg2){
+			var r1,r2,m;
+			try{
+				r1=arg1.toString().split(".")[1].length
+			}catch(e){
+				r1=0
+			}
+			try{
+				r2=arg2.toString().split(".")[1].length
+			}catch(e){
+				r2=0
+			}
+			// 获取最大精度的倍数
+			m=Math.pow(10,Math.max(r1,r2));
+			// 乘以最大倍数后再除回去,精度就不会丢失了
+			return (arg1*m+arg2*m)/m;
+		}
+
 		var sum = 0;
 		for (var j = 1; j < 14; j++) {
-			$('tbody tr').each(function(i){
-				// console.log(i);
-				$('tbody tr').find('th:eq('+j+')').each(function () {
-					var v = $(this).text().substr(0,$(this).text().length-1);
-					sum += parseFloat(v);
-				});
+			$('tbody tr').find('th:eq('+j+')').each(function () {
+				var v = $(this).text().substr(0,$(this).text().length-1);
+				sum = FloatAdd(v,sum);
 			});
-			console.log(sum);
+			$('tbody tr:last-child').append('<td>'+sum+'元</td>');
+			// console.log(sum);
 			sum = 0;
 		}
 
