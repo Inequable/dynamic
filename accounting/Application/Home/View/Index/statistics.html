@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
  <head> 
-  <meta charset="utf-8" /> 
-  <title>账单统计</title> 
-  <meta name="renderer" content="webkit" /> 
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
-  <link rel="stylesheet" href="{$smarty.const.JS_URL}layui/css/layui.css" media="all"/>
-  <link rel="stylesheet" href="{$smarty.const.CSS_URL}statistics.css"/>
+	<meta charset="utf-8" /> 
+	<title>账单统计</title> 
+	<meta name="renderer" content="webkit" /> 
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+	<link rel="stylesheet" href="{$smarty.const.JS_URL}layui/css/layui.css" media="all"/>
+	<link rel="stylesheet" href="{$smarty.const.CSS_URL}statistics.css"/>
 </head>
 <body>
 	<div class="layui-tab layui-tab-card">
@@ -24,92 +24,92 @@
 						<colgroup>
 							<col width="90px">
 						</colgroup>
-				    <thead>
-				    	<tr>
-				    		<th><input type="text" name="year" class="layui-input" id="year" placeholder="年份"></th>
-				    		<th>一月</th>
-				    		<th>二月</th>
-				    		<th>三月</th>
-				    		<th>四月</th>
-				    		<th>五月</th>
-				    		<th>六月</th>
-				    		<th>七月</th>
-				    		<th>八月</th>
-				    		<th>九月</th>
-				    		<th>十月</th>
-				    		<th>十一月</th>
-				    		<th>十二月</th>
-				    		<th class="count">合计</th>
-				    	</tr>
-				    </thead>
-				    <tbody>
-				    	{foreach $data as $k=>$list}
-				    	<tr>
-				    		<th>{$k}</th>
-				    		<th>{if isset($list['01'])}{$list['01']}{else}0{/if}元</th>
-				    		<th>{if isset($list['02'])}{$list['02']}{else}0{/if}元</th>
-				    		<th>{if isset($list['03'])}{$list['03']}{else}0{/if}元</th>
-				    		<th>{if isset($list['04'])}{$list['04']}{else}0{/if}元</th>
-				    		<th>{if isset($list['05'])}{$list['05']}{else}0{/if}元</th>
-				    		<th>{if isset($list['06'])}{$list['06']}{else}0{/if}元</th>
-				    		<th>{if isset($list['07'])}{$list['07']}{else}0{/if}元</th>
-				    		<th>{if isset($list['08'])}{$list['08']}{else}0{/if}元</th>
-				    		<th>{if isset($list['09'])}{$list['09']}{else}0{/if}元</th>
-				    		<th>{if isset($list['10'])}{$list['10']}{else}0{/if}元</th>
-				    		<th>{if isset($list['11'])}{$list['11']}{else}0{/if}元</th>
-				    		<th>{if isset($list['12'])}{$list['12']}{else}0{/if}元</th>
-				    		<th class="count">{$list['cols_total']|default:'0'}元</th>
-				    	</tr>
-				    	{/foreach}
-				    	<!-- <tr class="income">
-				    		<th>月收入</th>
-				    		<th>1.00元</th>
-				    		<th>2.00元</th>
-				    		<th>3.00元</th>
-				    		<th>4.00元</th>
-				    		<th>5.00元</th>
-				    		<th>6.00元</th>
-				    		<th>7.00元</th>
-				    		<th>8.00元</th>
-				    		<th>9.00元</th>
-				    		<th>10.00元</th>
-				    		<th>11.00元</th>
-				    		<th>12.00元</th>
-				    		<th>78.00元</th>
-				    	</tr>
-				    	<tr class="pay">
-				    		<th>月支出</th>
-				    		<th>1.00元</th>
-				    		<th>2.00元</th>
-				    		<th>3.00元</th>
-				    		<th>4.00元</th>
-				    		<th>5.00元</th>
-				    		<th>6.00元</th>
-				    		<th>7.00元</th>
-				    		<th>8.00元</th>
-				    		<th>9.00元</th>
-				    		<th>10.00元</th>
-				    		<th>11.00元</th>
-				    		<th>12.00元</th>
-				    		<th>78.00元</th>
-				    	</tr>
-				    	<tr class="count">
-				    		<th>合计</th>
-				    		<th>1.00元</th>
-				    		<th>2.00元</th>
-				    		<th>3.00元</th>
-				    		<th>4.00元</th>
-				    		<th>5.00元</th>
-				    		<th>6.00元</th>
-				    		<th>7.00元</th>
-				    		<th>8.00元</th>
-				    		<th>9.00元</th>
-				    		<th>10.00元</th>
-				    		<th>11.00元</th>
-				    		<th>12.00元</th>
-				    		<th>78.00元</th>
-				    	</tr> -->
-				    </tbody>
+					<thead>
+						<tr>
+							<th><input type="text" name="year" class="layui-input" id="year" placeholder="年份"></th>
+							<th>一月</th>
+							<th>二月</th>
+							<th>三月</th>
+							<th>四月</th>
+							<th>五月</th>
+							<th>六月</th>
+							<th>七月</th>
+							<th>八月</th>
+							<th>九月</th>
+							<th>十月</th>
+							<th>十一月</th>
+							<th>十二月</th>
+							<th class="count">合计</th>
+						</tr>
+					</thead>
+					<tbody>
+						{foreach $data as $k=>$list}
+						<tr>
+							<th>{$k}</th>
+							<th>{if isset($list['01'])}{$list['01']}{else}0{/if}元</th>
+							<th>{if isset($list['02'])}{$list['02']}{else}0{/if}元</th>
+							<th>{if isset($list['03'])}{$list['03']}{else}0{/if}元</th>
+							<th>{if isset($list['04'])}{$list['04']}{else}0{/if}元</th>
+							<th>{if isset($list['05'])}{$list['05']}{else}0{/if}元</th>
+							<th>{if isset($list['06'])}{$list['06']}{else}0{/if}元</th>
+							<th>{if isset($list['07'])}{$list['07']}{else}0{/if}元</th>
+							<th>{if isset($list['08'])}{$list['08']}{else}0{/if}元</th>
+							<th>{if isset($list['09'])}{$list['09']}{else}0{/if}元</th>
+							<th>{if isset($list['10'])}{$list['10']}{else}0{/if}元</th>
+							<th>{if isset($list['11'])}{$list['11']}{else}0{/if}元</th>
+							<th>{if isset($list['12'])}{$list['12']}{else}0{/if}元</th>
+							<th class="count">{$list['cols_total']|default:'0'}元</th>
+						</tr>
+						{/foreach}
+						<!-- <tr class="income">
+							<th>月收入</th>
+							<th>1.00元</th>
+							<th>2.00元</th>
+							<th>3.00元</th>
+							<th>4.00元</th>
+							<th>5.00元</th>
+							<th>6.00元</th>
+							<th>7.00元</th>
+							<th>8.00元</th>
+							<th>9.00元</th>
+							<th>10.00元</th>
+							<th>11.00元</th>
+							<th>12.00元</th>
+							<th>78.00元</th>
+						</tr>
+						<tr class="pay">
+							<th>月支出</th>
+							<th>1.00元</th>
+							<th>2.00元</th>
+							<th>3.00元</th>
+							<th>4.00元</th>
+							<th>5.00元</th>
+							<th>6.00元</th>
+							<th>7.00元</th>
+							<th>8.00元</th>
+							<th>9.00元</th>
+							<th>10.00元</th>
+							<th>11.00元</th>
+							<th>12.00元</th>
+							<th>78.00元</th>
+						</tr> -->
+						<tr class="count">
+							<td>合计</td>
+							<td>1.00元</td>
+							<td>2.00元</td>
+							<td>3.00元</td>
+							<td>4.00元</td>
+							<td>5.00元</td>
+							<td>6.00元</td>
+							<td>7.00元</td>
+							<td>8.00元</td>
+							<td>9.00元</td>
+							<td>10.00元</td>
+							<td>11.00元</td>
+							<td>12.00元</td>
+							<td>78.00元</td>
+						</tr> 
+					</tbody>
 					</table>
 				</div>
 				<!-- 曲线图容器 -->
@@ -119,16 +119,29 @@
 		</div>
 	</div>
 
-  <script src="{$smarty.const.JS_URL}jquery-3.3.1.min.js"></script>
-  <script src="{$smarty.const.JS_URL}layui/layui.js" charset="utf-8"></script>
-  <!-- Highcharts 是一个用纯JavaScript编写的一个图表库。 -->
-  <script src="{$smarty.const.JS_URL}highcharts.js"></script>
-  <script src="{$smarty.const.JS_URL}statistics.js"></script>
-  <script>
-  $(document).ready(function(){
-  	
-  });
-  </script>
+	<script src="{$smarty.const.JS_URL}jquery-3.3.1.min.js"></script>
+	<script src="{$smarty.const.JS_URL}layui/layui.js" charset="utf-8"></script>
+	<!-- Highcharts 是一个用纯JavaScript编写的一个图表库。 -->
+	<script src="{$smarty.const.JS_URL}highcharts.js"></script>
+	<script src="{$smarty.const.JS_URL}statistics.js"></script>
+	<script>
+	$(document).ready(function(){
+// 一完成，就差数据回显
+		var sum = 0;
+		for (var j = 1; j < 14; j++) {
+			$('tbody tr').each(function(i){
+				// console.log(i);
+				$('tbody tr').find('th:eq('+j+')').each(function () {
+					var v = $(this).text().substr(0,$(this).text().length-1);
+					sum += parseFloat(v);
+				});
+			});
+			console.log(sum);
+			sum = 0;
+		}
+
+	});
+	</script>
 
  </body>
 </html>
