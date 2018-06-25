@@ -126,7 +126,7 @@
 				r2=0
 			}
 			// 获取最大精度的倍数
-			m=Math.pow(10,Math.max(r1,r2));
+			m=Math.pow(1000,Math.max(r1,r2));
 			// 乘以最大倍数后再除回去,精度就不会丢失了
 			return (arg1*m+arg2*m)/m;
 		}
