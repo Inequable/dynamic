@@ -289,26 +289,59 @@ class IndexController extends Controller {
 			}
 		}
 		
-		// 存储月数组
+		// 存储类目/月关联数组
 		$data=array();
 		foreach ($res as $v) {
 			$key=$v['a_cols'];
 			$data[$key][$v['months']] = $v['sum'];
 		}
 
-		// 为$data数据多添加一个列总计的字段 
+		// 提取$data中的key值
+		$data_name_key = array_keys($data);
+		// 提取$data中的value值数组，月数组
+		$data_month_values = array_values($data);
+		// 定义一个12月的空数组
+		$month = array('01'=>0,'02'=>0,'03'=>0,'04'=>0,'05'=>0,'06'=>0,'07'=>0,'08'=>0,'09'=>0,'10'=>0,'11'=>0,'12'=>0);
+		// 循环月数组的组成一个拥有12个月的二维数组
+		for ($i=0; $i < count($data_month_values); $i++) { // 外层循环二维数组个数
+			foreach ($data_month_values[$i] as $key => $value) { // 数组名值对循环
+				// 判断第i个数组的键名是否在空的月数组$month中
+				if (array_key_exists($key,$month)) {
+					// 如果存在则为其赋值,并且强制转换成int类型，因为highcharts的本身原因，不能是字符串的类型
+					$month[$key] = (double)$value;
+				}
+			}
+			// 获得赋值过后的月数组
+			$month = array_values($month);
+			// 为第i个$data_month_values赋值
+			$data_month_values[$i] = $month;
+			// 初始化月数组$month
+			$month = array('01'=>0,'02'=>0,'03'=>0,'04'=>0,'05'=>0,'06'=>0,'07'=>0,'08'=>0,'09'=>0,'10'=>0,'11'=>0,'12'=>0);
+		}
+
+		// 定义一个与highcharts相关的关联数组，要形成一个json数据的
+		$names_months = array();
+		for ($i=0; $i < count($data_name_key); $i++) { 
+			$names_months[$i] = array('name'=>$data_name_key[$i],'data'=>$data_month_values[$i]);
+		}
+		// 形成json数据
+		$json_name_month = json_encode($names_months,JSON_UNESCAPED_UNICODE);
+		
+		// 为$data数据多添加一个列总计的字段 ,
 		foreach ($data as $key => $value) {
 			$data[$key]['cols_total'] = array_sum($data[$key]);
 		}
+		
 		// 输出sql语句
 		// echo $m_account->_sql();
 		// echo '<pre>';
-		// print_r($res);
-		// print_r(json_encode($data,JSON_UNESCAPED_UNICODE));
+		// print_r($names_months);
+		// print_r(json_encode($names_months,JSON_UNESCAPED_UNICODE));
 		// echo '</pre>';
 		// exit();
 
 		$this->assign('data',$data);
+		$this->assign('json',$json_name_month);
 		$this->display();
 	}
 
@@ -382,28 +415,28 @@ class IndexController extends Controller {
 		$m_account=D('Account');
 		// 按月份\收支分类和类目查询出金额并累加
 		// mysql查询语句为:select DATE_FORMAT(a_date,'%Y') as year,DATE_FORMAT(a_date,'%m') as months,sum(money),account,a_cols from acc_account where a_user='yangwendi' and DATE_FORMAT(a_date,'%Y')='2018' group by year,months,a_cols,account;
-		$data=$m_account->field("DATE_FORMAT(a_date,'%Y') as year,DATE_FORMAT(a_date,'%m') as months,sum(money) as sum,a_cols")->where("a_user='yangwendi' and DATE_FORMAT(a_date,'%Y')='2018'")->group("year,months,a_cols,account")->select();
+		$data=$m_account->field("DATE_FORMAT(a_date,'%Y') as year,DATE_FORMAT(a_date,'%m') as months,sum(money) as sum,a_cols")->where("a_user='tomtset' and DATE_FORMAT(a_date,'%Y')='2018'")->group("year,months,a_cols,account")->select();
 		// 存储月数组
-		// $months=array('01','02','03','04','05','06','07','08','09','10','11','12');
-		// for ($i=0; $i < count($data); $i++) { 
-		//   // 存储金额统计  0,0,0,0,0,0,0,0,0,0,0,0初始化数组，如将$sum定在循环外面，则会出现缓存的问题
-		//   $sum=array(0=>'0',1=>'0',2=>'0',3=>'0',4=>'0',5=>'0',6=>'0',7=>'0',8=>'0',9=>'0',10=>'0',11=>'0');
-		//   // 内层循环判断月份
-		//   for ($j=0; $j < count($months); $j++) { 
-		//     if ($data[$i]['months']==$months[$j]) {
-		//       $sum[$j]=$data[$i]['sum'];
-		//     }
-		//   }
-		//   $data[$i]['sum']=$sum;//将每个sum数组赋值
-		//   // 将查询到的数据源中months由单个数改成一样的月数组，从而循环得到一个新的数据源
-		//   $data[$i]['months']=$months;
-		//   // 已处理了两个数据，还需要将其他分类归组
+		$months=array('01','02','03','04','05','06','07','08','09','10','11','12');
+		for ($i=0; $i < count($data); $i++) { 
+		  // 存储金额统计  0,0,0,0,0,0,0,0,0,0,0,0初始化数组，如将$sum定在循环外面，则会出现缓存的问题
+		  $sum=array(0=>'0',1=>'0',2=>'0',3=>'0',4=>'0',5=>'0',6=>'0',7=>'0',8=>'0',9=>'0',10=>'0',11=>'0');
+		  // 内层循环判断月份
+		  for ($j=0; $j < count($months); $j++) { 
+		    if ($data[$i]['months']==$months[$j]) {
+		      $sum[$j]=$data[$i]['sum'];
+		    }
+		  }
+		  $data[$i]['sum']=$sum;//将每个sum数组赋值
+		  // 将查询到的数据源中months由单个数改成一样的月数组，从而循环得到一个新的数据源
+		  $data[$i]['months']=$months;
+		  // 已处理了两个数据，还需要将其他分类归组
 			
-		// }
-		$res=array();
-		foreach ($data as $v) {
-			$key=$v['a_cols'];
-			$res[$key][$v['months']] = $v['sum'];
+		}
+		// $res=array();
+		// foreach ($data as $v) {
+		// 	$key=$v['a_cols'];
+		// 	$res[$key][$v['months']] = $v['sum'];
 			// if (array_key_exists($key, $res)) {
 			//   if (is_array($res[$key]['sum'])) {
 			//     $res[$key]['sum'][]=$v['sum'];
@@ -415,8 +448,8 @@ class IndexController extends Controller {
 			// }else{
 			//   $res[$key]=$v;
 			// }
-		}
-		$json=json_decode(json_encode($res,JSON_UNESCAPED_UNICODE));
+		// }
+		$json=json_decode(json_encode($data,JSON_UNESCAPED_UNICODE));
 		$this->ajaxReturn($json);
 	}
 
