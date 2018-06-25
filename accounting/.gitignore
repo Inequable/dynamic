@@ -1,3 +1,5 @@
 database/accounting1.sql
 Application/Runtime/Cache/*
 Application/Runtime/Logs/*
+index.php
+Application/Common/*
