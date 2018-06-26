@@ -8,12 +8,19 @@ layui.use(['form','table','layer','laydate','laypage'],function () {
 	//加载jquery框架，但无法让除layui的插件使用，如： 图表 下面用到的图表，需要另外引用jquery
 	$=layui.jquery;
 
+	// var yaer = 2018;
 	//渲染一个日期控件
 	// 在使用frame框架时，用火狐浏览会出现bug，js无法使用，单个页面使用没问题，估计是各个页面的js代码冲突了
   laydate.render({
 	elem: '#year',
-	value:'2018',//默认是2018年的月份
+	// value:yaer,//默认是2018年的月份
 	type: 'year',//只允许出现年份
+	done:function (value,date,endDate) {
+		console.log(value); // 获取的是选中的日期
+		console.log(date); // 当前时间
+		// location.reload(true);
+		location.href = '?year='+value;
+	},
   });
 
 // 点击按钮触发事件
@@ -76,7 +83,7 @@ layui.use(['form','table','layer','laydate','laypage'],function () {
 		  };
 
 		  var tooltip = {
-			valueSuffix: '￥',
+			valueSuffix: '元(￥)',
 			crosshairs: true,
 			shared: true
 		  }

@@ -278,9 +278,9 @@ class IndexController extends Controller {
 	 */
 	public function statistics(){
 		$user=session('user');
-		$year=I('get.yaer')==null ? '2018' : $yaer;
+		$year=(I('get.year')==null) ? '2018' : I('get.year');
 		$m_account=D('Account');
-
+// echo $year;exit();
 		$res=$m_account->field("DATE_FORMAT(a_date,'%m') as months,sum(money) as sum,account,a_cols")->where("a_user='$user' and DATE_FORMAT(a_date,'%Y')='$year'")->group("months,a_cols,account")->select();
 		// 判断收支类型，如果是支出则为金额加上负号（-）
 		for ($i=0; $i < count($res); $i++) { 
