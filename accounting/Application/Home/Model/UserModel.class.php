@@ -22,10 +22,10 @@ class UserModel extends Model{
 	 * @return [type]           [description]
 	 */
 	public function checkNM($username='', $password=''){
-		//当然密码后期需要处理
+		//密码的加密方式是sha1和md5整合加密
 
 		$info = $this->where("username='$username'")->find();
-		if ($info['password']==$password) {
+		if ($info['password']==sha1(md5($password))) {
 			return $info;
 		}
 		return null;

@@ -405,52 +405,7 @@ class IndexController extends Controller {
 	}
 
 	public function test(){
-		header( 'Content-Type:text/html;charset=utf-8 ');  
-		// 用ajax/get接收年份
-		// $year=I('get.year');
-		// for ($i=1; $i <= 12; $i++) { 
-		//   $day=date('t', strtotime($year.'-'.$i));//判断每一年月份有几天
-		//   echo $day.'<br>';
-		// }
-		$m_account=D('Account');
-		// 按月份\收支分类和类目查询出金额并累加
-		// mysql查询语句为:select DATE_FORMAT(a_date,'%Y') as year,DATE_FORMAT(a_date,'%m') as months,sum(money),account,a_cols from acc_account where a_user='yangwendi' and DATE_FORMAT(a_date,'%Y')='2018' group by year,months,a_cols,account;
-		$data=$m_account->field("DATE_FORMAT(a_date,'%Y') as year,DATE_FORMAT(a_date,'%m') as months,sum(money) as sum,a_cols")->where("a_user='tomtset' and DATE_FORMAT(a_date,'%Y')='2018'")->group("year,months,a_cols,account")->select();
-		// 存储月数组
-		$months=array('01','02','03','04','05','06','07','08','09','10','11','12');
-		for ($i=0; $i < count($data); $i++) { 
-		  // 存储金额统计  0,0,0,0,0,0,0,0,0,0,0,0初始化数组，如将$sum定在循环外面，则会出现缓存的问题
-		  $sum=array(0=>'0',1=>'0',2=>'0',3=>'0',4=>'0',5=>'0',6=>'0',7=>'0',8=>'0',9=>'0',10=>'0',11=>'0');
-		  // 内层循环判断月份
-		  for ($j=0; $j < count($months); $j++) { 
-		    if ($data[$i]['months']==$months[$j]) {
-		      $sum[$j]=$data[$i]['sum'];
-		    }
-		  }
-		  $data[$i]['sum']=$sum;//将每个sum数组赋值
-		  // 将查询到的数据源中months由单个数改成一样的月数组，从而循环得到一个新的数据源
-		  $data[$i]['months']=$months;
-		  // 已处理了两个数据，还需要将其他分类归组
-			
-		}
-		// $res=array();
-		// foreach ($data as $v) {
-		// 	$key=$v['a_cols'];
-		// 	$res[$key][$v['months']] = $v['sum'];
-			// if (array_key_exists($key, $res)) {
-			//   if (is_array($res[$key]['sum'])) {
-			//     $res[$key]['sum'][]=$v['sum'];
-			//     $res[$key]['months'][]=$v['months'];
-			//   }else{
-			//     $res[$key]['months']=array($res[$key]['months'],$v['months']);
-			//     $res[$key]['sum']=array($res[$key]['sum'],$v['sum']);
-			//   }
-			// }else{
-			//   $res[$key]=$v;
-			// }
-		// }
-		$json=json_decode(json_encode($data,JSON_UNESCAPED_UNICODE));
-		$this->ajaxReturn($json);
+		echo sha1(md5('2015329122'));
 	}
 
 }
